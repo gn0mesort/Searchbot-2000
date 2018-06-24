@@ -103,7 +103,7 @@ program.name(pkg.name)
 			 .parse(process.argv);
 
 process.title = pkg.name;
-const pidfile = tmp.fileSync({ prefix: `${pkg.name}-`, dir: os.homedir(), postfix: '.json' });
+const pidfile = tmp.fileSync({ prefix: `.${pkg.name}-`, dir: os.homedir(), postfix: '.json' });
 fs.writeJSONSync(pidfile.name, { pid: process.pid });
 
 process.on('SIGINT', () => {
