@@ -47,9 +47,9 @@ There are generally two levels of configuration in `searchbot-2000`. The applica
 > An object containing information about the names and locations of `searchbot-2000` handlers. Each object should be of the following format:
 
 ```json
-<handler_name>: {
-	handler: <absolute_path_to_script_file>,
-	config: <absolute_path_to_config_file>
+"<handler_name>": {
+	"handler": "<absolute_path_to_script_file>",
+	"config": "<absolute_path_to_config_file>"
 }
 ```
 
