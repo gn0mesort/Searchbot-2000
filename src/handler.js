@@ -97,7 +97,16 @@ class Handler extends EventEmitter {
 
 			this.emit('begin', opts.id);
 			opts.query = query;
-			let r = await func(opts, nightmare); // Invoke handler
+			let r = await Promise.race([
+				func(opts, nightmare),
+				new Promise((resolve, reject) => {
+					setTimeout(() => {
+						nightmare.end().then(() => {
+							resolve(1);
+						});
+					}, 25 * 60000)
+				})
+			]); // Invoke handler
 			this.emit('complete', opts.id);
 			return r;
 		};

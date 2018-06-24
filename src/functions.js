@@ -124,12 +124,12 @@ function rand(min, max) {
  */
 async function jswait(opts, nightmare) {
 		opts.logger.log('info', 'JS wait');
-		await nightmare.wait(() => {
-			return new Promise((resolve, reject) => {
-																								console.log("Finished");
-																								resolve(true);
-																							});
-		});
+		await Promise.race([
+												nightmare.wait(() => { return true; }),
+												new Promise((resolve, reject) => {
+													setTimeout(() => { reject('JS Timeout'); }, 30000);
+												})
+											]);
 }
 
 /**

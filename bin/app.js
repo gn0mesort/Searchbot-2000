@@ -133,7 +133,7 @@ try {
 																														),
 																	{ encoding: 'utf-8' }
 																).trim().split(/\n|\r\n/gi);
-	logger.log('debug', `Queries are ${JSON.stringify(queries)}`);
+	// logger.log('debug', `Queries are ${JSON.stringify(queries)}`);
 
 	logger.log('info', 'Loading handlers.');
 	for (let handlerName in config.handlers) {
