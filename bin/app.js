@@ -11,6 +11,7 @@ const fs = require('fs-extra');
 const uuid = require('uuid/v1')
 const daemonize = require('daemonize-process');
 const chalk = require('chalk');
+const tmp = require('tmp');
 
 const { Handler, Logger, LogLevel, rand } = require(path.join(__dirname, '../index.js'));
 
@@ -86,14 +87,9 @@ async function daemonRun(handlers, queries, config, loop) {
 	} while (loop);
 }
 
+tmp.setGracefulCleanup();
 fs.ensureFileSync(path.join(os.homedir(), `.${pkg.name}`));
 fs.ensureFileSync(path.join(__dirname, '../logs/application.log'));
-
-process.on('SIGINT', () => {
-	process.exit(0);
-}).on('SIGTERM', () => {
-	process.exit(0);
-});
 
 program.name(pkg.name)
 			 .version(pkg.version)
@@ -105,6 +101,16 @@ program.name(pkg.name)
 			 .option('-l, --loop', 'Run in a loop even if the process is not a daemon')
 			 .option('-d, --daemonize', 'Run in the background as a daemon. Handlers will run periodically based on the \'jitter\' setting')
 			 .parse(process.argv);
+
+process.title = pkg.name;
+const pidfile = tmp.fileSync({ prefix: `${pkg.name}-`, dir: os.homedir(), postfix: '.json' });
+fs.writeJSONSync(pidfile.name, { pid: process.pid });
+
+process.on('SIGINT', () => {
+	process.exit(0);
+}).on('SIGTERM', () => {
+	process.exit(0);
+});
 
 try {
 	const config = {},
