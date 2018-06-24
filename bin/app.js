@@ -89,6 +89,12 @@ async function daemonRun(handlers, queries, config, loop) {
 fs.ensureFileSync(path.join(os.homedir(), `.${pkg.name}`));
 fs.ensureFileSync(path.join(__dirname, '../logs/application.log'));
 
+process.on('SIGINT', () => {
+	process.exit(0);
+}).on('SIGTERM', () => {
+	process.exit(0);
+});
+
 program.name(pkg.name)
 			 .version(pkg.version)
 			 .description(pkg.description)
