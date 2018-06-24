@@ -1,0 +1,34 @@
+{
+	"maxHandlers": 2,
+	"jitter": 10,
+	"handlers": {
+		"google": {
+			"script": "google/script.js",
+			"config": "google/config.json"
+		},
+		"bing": {
+			"script": "bing/script.js",
+			"config": "bing/config.json"
+		},
+		"yahoo": {
+			"script": "yahoo/script.js",
+			"config": "yahoo/config.json"
+		},
+		"aol": {
+			"script": "aol/script.js",
+			"config": "aol/config.json"
+		},
+		"yandex": {
+			"script": "yandex/script.js",
+			"config": "yandex/config.json"
+		},
+		"baidu": {
+			"script": "baidu/script.js",
+			"config": "baidu/config.json"
+		},
+		"qwant": {
+			"script": "qwant/script.js",
+			"config": "qwant/config.json"
+		}
+	}
+}
