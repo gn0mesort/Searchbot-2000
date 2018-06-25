@@ -10,6 +10,8 @@ npm install -g gutfuckllc/searchbot-2000
 
 ## Running
 
+`searchbot-2000` can be invoked either using a global or local install. To simply start the daemon with the default configuration you may use `npm start`. From a global install you may invoke it with the following options:
+
 ```txt
   Usage: searchbot-2000 [options]
 
@@ -25,6 +27,10 @@ npm install -g gutfuckllc/searchbot-2000
     -d, --daemonize           Run in the background as a daemon. Handlers will run periodically based on the 'jitter' setting
     -h, --help                output usage information
 ```
+
+`searchbot-2000` requires access to an X server in UNIX-like environments. This is a limitation of [`nightmare`](https://github.com/segmentio/nightmare). In server environments it may be necessary to use [`xvfb`](https://www.x.org/archive/X11R7.6/doc/man/man1/Xvfb.1.xhtml) or similar. If no compatible server exists `searchbot-2000` may fail silently.
+
+You may stop `searchbot-2000` by invoking `npm stop`, or `kill-searchbot-2000`.
 
 ## Configuration
 
