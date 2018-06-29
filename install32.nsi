@@ -18,7 +18,7 @@ Section "install"
 	SetRegView 32
 	SetOutPath $INSTDIR
 	File "node-v8.11.3-x86.msi"
-	ExecWait '"msiexec" /i "$INSTDIR\node-v8.11.3-x64.msi"' $0
+	ExecWait '"msiexec" /i "$INSTDIR\node-v8.11.3-x86.msi"' $0
 	ReadRegStr $0 HKLM SOFTWARE\Node.js "InstallPath"
 	DetailPrint "Executing $0npm.cmd i -g gutfuckllc/${APP}"
 	nsExec::ExecToLog '"$0npm.cmd" i -g "gutfuckllc/${APP}'
