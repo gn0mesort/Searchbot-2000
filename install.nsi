@@ -5,7 +5,7 @@
 !define MINOR "0"
 !define PATCH "1"
 
-OutFile "${APP}.exe"
+OutFile "${APP}-v${MAJOR}.${MINOR}.${PATCH}-x64.exe"
 Name "${COMPANY} - ${APP}"
 InstallDir "$TEMP\${APP}\install"
 RequestExecutionLevel admin
