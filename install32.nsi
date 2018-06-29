@@ -9,6 +9,10 @@ OutFile "${APP}-v${MAJOR}.${MINOR}.${PATCH}-x86.exe"
 Name "${COMPANY} - ${APP}"
 InstallDir "$TEMP\${APP}\install"
 RequestExecutionLevel admin
+LicenseData "license.rtf"
+
+page license
+page instfiles
 
 Section "install"
 	SetRegView 32
