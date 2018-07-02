@@ -1,6 +1,6 @@
 {
   "name": "searchbot-2000",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "searchbot-2000 performs programmatic searches on many popular search engines.",
   "main": "index.js",
   "scripts": {
@@ -28,6 +28,7 @@
     "daemonize-process": "^1.0.9",
     "fs-extra": "^5.0.0",
     "nightmare": "^2.10.0",
+    "nightmare-download-manager": "^0.2.5",
     "tmp": "0.0.33",
     "uuid": "^3.2.1"
   }

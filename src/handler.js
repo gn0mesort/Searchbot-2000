@@ -9,6 +9,8 @@ const Nightmare = require('nightmare');
 const { statusCode } = require(path.join(__dirname, 'functions.js'));
 const { Logger, LogLevel } = require(path.join(__dirname, 'logger.js'));
 
+require('nightmare-download-manager')(Nightmare);
+
 /**
  * Defines a handler.
  * Handlers are fairly arbitrary. They essentially represent plugin modules that
@@ -97,6 +99,7 @@ class Handler extends EventEmitter {
 
 			this.emit('begin', opts.id);
 			opts.query = query;
+			await nightmare.downloadManager();
 			let r = await Promise.race([
 				func(opts, nightmare),
 				new Promise((resolve, reject) => {
